@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Name=Torch
+Icon=harbour-torch
+Exec=harbour-torch
+Name[fr]=Torche
