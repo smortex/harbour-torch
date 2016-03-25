@@ -59,6 +59,13 @@ Page {
                 if (sw.checked) torch.enable(); else torch.disable();
             }
         }
+
+        Connections {
+            target: torch
+            onStateChanged: {
+                sw.checked = torch.state()
+            }
+        }
     }
 
     function db() {

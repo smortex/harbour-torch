@@ -9,12 +9,18 @@ FlashLight::FlashLight()
 
 void FlashLight::enable()
 {
-    write_value(current_state = 1);
+    if (current_state != true) {
+        write_value(current_state = true);
+        emit stateChanged(current_state);
+    }
 }
 
 void FlashLight::disable()
 {
-    write_value(current_state = 0);
+    if (current_state != false) {
+        write_value(current_state = false);
+        emit stateChanged(current_state);
+    }
 }
 
 void FlashLight::toggle()
@@ -23,6 +29,11 @@ void FlashLight::toggle()
         disable();
     else
         enable();
+}
+
+bool FlashLight::state()
+{
+    return current_state;
 }
 
 void FlashLight::write_value(int value)
