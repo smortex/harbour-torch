@@ -94,7 +94,6 @@ Page {
     function dbSet(key, value) {
         db().transaction(function (tx) {
             tx.executeSql('UPDATE settings SET value = ? WHERE key = ?', [value, key])
-            console.log("WRITE")
         })
     }
 
