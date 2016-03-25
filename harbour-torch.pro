@@ -22,15 +22,16 @@ OTHER_FILES += qml/harbour-torch.qml \
     rpm/$${TARGET}.spec \
     rpm/$${TARGET}.yaml \
     $${TARGET}.desktop
-#    translations/*.ts \
+    translations/*.ts \
 
 # to disable building translations every time, comment out the
 # following CONFIG line
-#CONFIG += sailfishapp_i18n
-#TRANSLATIONS += translations/$${TARGET}-de.ts
+CONFIG += sailfishapp_i18n
+TRANSLATIONS += translations/$${TARGET}-fr.ts
 
 DISTFILES += \
-    qml/pages/MainPage.qml
+    qml/pages/MainPage.qml \
+    qml/pages/Settings.qml
 
 HEADERS += \
     src/flashlight.h
