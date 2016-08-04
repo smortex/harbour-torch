@@ -1,5 +1,6 @@
-#include <iostream>
-#include <fstream>
+#include <QFile>
+#include <QTextStream>
+
 #include "flashlight.h"
 
 FlashLight::FlashLight()
@@ -38,8 +39,10 @@ bool FlashLight::state()
 
 void FlashLight::write_value(int value)
 {
-    std::ofstream io;
-    io.open("/sys/kernel/debug/flash_adp1650/mode");
-    io << value;
-    io.close();
+    QFile file("/sys/kernel/debug/flash_adp1650/mode");
+    QTextStream out(&file);
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        out << value;
+        file.close();
+    }
 }
