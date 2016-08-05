@@ -18,7 +18,7 @@ signals:
     void stateChanged(bool arg);
 private:
     bool current_state;
-    void write_value(int value);
+    bool write_value(int value);
     QStringList filenames;
 };
 
