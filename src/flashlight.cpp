@@ -5,6 +5,9 @@
 
 FlashLight::FlashLight()
 {
+    filenames << "/sys/class/leds/led:flash_torch/brightness"; // LG Nexus 5, Fairphone Fairphone 2
+    filenames << "/sys/class/leds/torch-flash/flash_light";    // Motorola Photon Q
+    filenames << "/sys/class/leds/torch-light0/brightness";    // Intex Aqua Fish
     filenames << "/sys/kernel/debug/flash_adp1650/mode";       // Jolla
 
     current_state = false;
