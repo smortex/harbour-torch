@@ -5,6 +5,8 @@
 
 FlashLight::FlashLight()
 {
+    filenames << "/sys/kernel/debug/flash_adp1650/mode";       // Jolla
+
     current_state = false;
 }
 
@@ -39,9 +41,6 @@ bool FlashLight::state()
 
 void FlashLight::write_value(int value)
 {
-    QStringList filenames;
-    filenames << "/sys/kernel/debug/flash_adp1650/mode";
-
     foreach (QString filename, filenames) {
         QFile file(filename);
         QTextStream out(&file);

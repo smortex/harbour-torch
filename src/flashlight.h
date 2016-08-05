@@ -2,6 +2,7 @@
 #define FLASHLIGHT_H
 
 #include <QObject>
+#include <QStringList>
 
 class FlashLight : public QObject
 {
@@ -18,6 +19,7 @@ signals:
 private:
     bool current_state;
     void write_value(int value);
+    QStringList filenames;
 };
 
 #endif // FLASHLIGHT_H
