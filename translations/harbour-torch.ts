@@ -16,7 +16,7 @@
     </message>
 </context>
 <context>
-    <name>Settings</name>
+    <name>SettingsPage</name>
     <message>
         <source>Settings</source>
         <translation type="unfinished"></translation>

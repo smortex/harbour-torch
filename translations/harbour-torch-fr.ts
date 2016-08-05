@@ -12,25 +12,25 @@
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="44"/>
+        <location filename="../qml/pages/MainPage.qml" line="14"/>
         <source>Settings</source>
         <translation>Préférences</translation>
     </message>
 </context>
 <context>
-    <name>Settings</name>
+    <name>SettingsPage</name>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="12"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="12"/>
         <source>Settings</source>
         <translation>Préférences</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="17"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="17"/>
         <source>Switch the torch on when the application starts</source>
         <translation>Allumer la torche au démarrage de l&apos;application</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="18"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="18"/>
         <source>Allows the torch to be switched on from the locked screen shortcuts before typing-in the unlock code</source>
         <translation>Permet d&apos;activer la torche lorsque l&apos;écran est verouillé sans saisir le code</translation>
     </message>

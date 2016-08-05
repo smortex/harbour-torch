@@ -13,7 +13,7 @@ Page {
             MenuItem {
                 text: qsTr("Settings")
                 onClicked: {
-                    var dialog = pageStack.push(Qt.resolvedUrl("Settings.qml"), { enableOnStart: dbGet('enable_on_start') === '1' })
+                    var dialog = pageStack.push(Qt.resolvedUrl("SettingsPage.qml"), { enableOnStart: dbGet('enable_on_start') === '1' })
                     dialog.accepted.connect(function () {
                         dbSet('enable_on_start', dialog.enableOnStart)
                     })
