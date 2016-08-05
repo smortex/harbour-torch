@@ -22,7 +22,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Automatically switch the torch on when the application starts</source>
+        <source>Switch the torch on when the application starts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allows the torch to be switched on from the locked screen shortcuts before typing-in the unlock code</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

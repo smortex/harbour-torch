@@ -14,7 +14,8 @@ Dialog {
 
         TextSwitch {
             id: enableOnStartSwitch
-            text: qsTr("Automatically switch the torch on when the application starts")
+            text: qsTr("Switch the torch on when the application starts")
+            description: qsTr("Allows the torch to be switched on from the locked screen shortcuts before typing-in the unlock code")
             checked: enableOnStart
         }
     }

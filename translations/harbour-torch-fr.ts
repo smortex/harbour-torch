@@ -26,8 +26,13 @@
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="17"/>
-        <source>Automatically switch the torch on when the application starts</source>
-        <translation>Activer automatiquement la torche au démarrage de l&apos;application</translation>
+        <source>Switch the torch on when the application starts</source>
+        <translation>Allumer la torche au démarrage de l&apos;application</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="18"/>
+        <source>Allows the torch to be switched on from the locked screen shortcuts before typing-in the unlock code</source>
+        <translation>Permet d&apos;activer la torche lorsque l&apos;écran est verouillé sans saisir le code</translation>
     </message>
 </context>
 </TS>
