@@ -39,11 +39,18 @@ bool FlashLight::state()
 
 void FlashLight::write_value(int value)
 {
-    QFile file("/sys/kernel/debug/flash_adp1650/mode");
-    QTextStream out(&file);
-    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        out << value;
-        file.close();
-    } else
-        emit failure();
+    QStringList filenames;
+    filenames << "/sys/kernel/debug/flash_adp1650/mode";
+
+    foreach (QString filename, filenames) {
+        QFile file(filename);
+        QTextStream out(&file);
+        if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            out << value;
+            file.close();
+            return;
+        }
+    }
+
+    emit failure();
 }
