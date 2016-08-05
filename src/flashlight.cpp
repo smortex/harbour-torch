@@ -44,5 +44,6 @@ void FlashLight::write_value(int value)
     if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
         out << value;
         file.close();
-    }
+    } else
+        emit failure();
 }

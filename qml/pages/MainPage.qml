@@ -65,6 +65,9 @@ Page {
             onStateChanged: {
                 sw.checked = torch.state()
             }
+            onFailure: {
+                pageStack.replace(Qt.resolvedUrl("FailurePage.qml"), null, PageStackAction.Immediate)
+            }
         }
     }
 

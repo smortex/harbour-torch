@@ -13,6 +13,7 @@ public:
     Q_INVOKABLE void toggle();
     Q_INVOKABLE bool state();
 signals:
+    void failure();
     void stateChanged(bool arg);
 private:
     bool current_state;

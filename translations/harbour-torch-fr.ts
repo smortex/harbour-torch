@@ -2,6 +2,14 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="fr_FR">
 <context>
+    <name>FailurePage</name>
+    <message>
+        <location filename="../qml/pages/FailurePage.qml" line="6"/>
+        <source>This device is not supported</source>
+        <translation>Ce téléphone n&apos;est pas supporté</translation>
+    </message>
+</context>
+<context>
     <name>MainPage</name>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="44"/>

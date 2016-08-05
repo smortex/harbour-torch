@@ -31,7 +31,8 @@ TRANSLATIONS += translations/$${TARGET}-fr.ts
 
 DISTFILES += \
     qml/pages/MainPage.qml \
-    qml/pages/Settings.qml
+    qml/pages/Settings.qml \
+    qml/pages/FailurePage.qml
 
 HEADERS += \
     src/flashlight.h
