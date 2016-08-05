@@ -72,6 +72,6 @@ Page {
 
     Component.onCompleted: {
         if (dbGet('enable_on_start') === '1')
-            sw.checked = true
+            torch.enable();
     }
 }
