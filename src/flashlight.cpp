@@ -31,6 +31,8 @@ void FlashLight::toggle()
     if (toggleDBus() || write_value(!current_state)) {
         current_state = !current_state;
         emit stateChanged();
+    } else {
+        emit failure();
     }
 }
 
@@ -67,7 +69,5 @@ bool FlashLight::write_value(int value)
             return true;
         }
     }
-
-    emit failure();
     return false;
 }
