@@ -2,6 +2,8 @@
 #include <QTextStream>
 #include <QtDBus/QtDBus>
 
+#include <QDebug>
+
 #include "flashlight.h"
 
 static const QString FLASHLIGHT_SERVICE = "com.jolla.settings.system.flashlight";
@@ -16,6 +18,20 @@ FlashLight::FlashLight()
     filenames << "/sys/kernel/debug/flash_adp1650/mode";       // Jolla
 
     current_state = false;
+
+    if (QDBusConnection::sessionBus().connect(FLASHLIGHT_SERVICE,
+                                              FLASHLIGHT_PATH,
+                                              FLASHLIGHT_INTERFACE,
+                                              "flashlightOnChanged",
+                                              this,
+                                              SLOT(flashlightOnChangedSlot(bool)))) {
+        qDebug() << "Connected to DBus flashlightOnChanged event";
+    }
+}
+
+void FlashLight::flashlightOnChangedSlot(bool state)
+{
+    setstate(state);
 }
 
 void FlashLight::enable()
@@ -32,10 +48,7 @@ void FlashLight::disable()
 
 void FlashLight::toggle()
 {
-    if (toggleDBus() || write_value(!current_state)) {
-        current_state = !current_state;
-        emit stateChanged();
-    } else {
+    if (!toggleDBus() && !write_value(!current_state)) {
         emit failure();
     }
 }
@@ -50,6 +63,7 @@ bool FlashLight::toggleDBus() {
     if (iface.isValid()) {
         QDBusMessage reply = iface.call("toggleFlashlight");
         if (reply.type() == QDBusMessage::ReplyMessage) {
+            qDebug() << "Flashlight toggled through DBus";
             return true;
         }
     }
@@ -61,6 +75,12 @@ bool FlashLight::state()
     return current_state;
 }
 
+void FlashLight::setstate(bool state)
+{
+    current_state = state;
+    emit stateChanged();
+}
+
 bool FlashLight::write_value(int value)
 {
     foreach (QString filename, filenames) {
@@ -69,6 +89,8 @@ bool FlashLight::write_value(int value)
         if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
             out << value;
             file.close();
+            setstate(value);
+            qDebug() << "Flashlight toggled through" << filename;
             return true;
         }
     }

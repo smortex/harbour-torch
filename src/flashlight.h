@@ -20,8 +20,11 @@ private:
     bool current_state;
     bool write_value(int value);
     bool state();
+    void setstate(bool state);
     bool toggleDBus();
     QStringList filenames;
+private slots:
+    void flashlightOnChangedSlot(bool);
 };
 
 #endif // FLASHLIGHT_H
