@@ -15,22 +15,22 @@ FlashLight::FlashLight()
 
 void FlashLight::enable()
 {
-     if (write_value(true))
-         emit stateChanged(current_state);
+     if (current_state != true)
+         toggle();
 }
 
 void FlashLight::disable()
 {
-     if (write_value(false))
-         emit stateChanged(current_state);
+     if (current_state != false)
+         toggle();
 }
 
 void FlashLight::toggle()
 {
-    if (current_state)
-        disable();
-    else
-        enable();
+    if (write_value(!current_state)) {
+        current_state = !current_state;
+        emit stateChanged(current_state);
+    }
 }
 
 bool FlashLight::state()
@@ -40,15 +40,11 @@ bool FlashLight::state()
 
 bool FlashLight::write_value(int value)
 {
-    if (current_state == value)
-        return false;
-
     foreach (QString filename, filenames) {
         QFile file(filename);
         QTextStream out(&file);
         if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
             out << value;
-            current_state = value;
             file.close();
             return true;
         }
