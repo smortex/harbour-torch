@@ -4,6 +4,10 @@
 
 #include "flashlight.h"
 
+static const QString FLASHLIGHT_SERVICE = "com.jolla.settings.system.flashlight";
+static const QString FLASHLIGHT_PATH = "/com/jolla/settings/system/flashlight";
+static const QString FLASHLIGHT_INTERFACE = FLASHLIGHT_SERVICE;
+
 FlashLight::FlashLight()
 {
     filenames << "/sys/class/leds/led:flash_torch/brightness"; // LG Nexus 5, Fairphone Fairphone 2
@@ -40,10 +44,9 @@ bool FlashLight::toggleDBus() {
     if (!QDBusConnection::sessionBus().isConnected()) {
         return false;
     }
-    QDBusInterface iface("com.jolla.settings.system.flashlight",
-                         "/com/jolla/settings/system/flashlight",
-                         "com.jolla.settings.system.flashlight",
-                         QDBusConnection::sessionBus());
+
+    QDBusInterface iface(FLASHLIGHT_SERVICE, FLASHLIGHT_PATH, FLASHLIGHT_INTERFACE, QDBusConnection::sessionBus());
+
     if (iface.isValid()) {
         QDBusMessage reply = iface.call("toggleFlashlight");
         if (reply.type() == QDBusMessage::ReplyMessage) {
