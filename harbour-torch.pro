@@ -14,6 +14,8 @@ TARGET = harbour-torch
 
 CONFIG += sailfishapp
 
+QT += dbus
+
 SOURCES += src/harbour-torch.cpp \
     src/flashlight.cpp
 

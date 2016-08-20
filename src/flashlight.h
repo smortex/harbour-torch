@@ -20,6 +20,7 @@ private:
     bool current_state;
     bool write_value(int value);
     bool state();
+    bool toggleDBus();
     QStringList filenames;
 };
 

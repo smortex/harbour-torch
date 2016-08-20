@@ -1,5 +1,6 @@
 #include <QFile>
 #include <QTextStream>
+#include <QtDBus/QtDBus>
 
 #include "flashlight.h"
 
@@ -27,10 +28,27 @@ void FlashLight::disable()
 
 void FlashLight::toggle()
 {
-    if (write_value(!current_state)) {
+    if (toggleDBus() || write_value(!current_state)) {
         current_state = !current_state;
         emit stateChanged();
     }
+}
+
+bool FlashLight::toggleDBus() {
+    if (!QDBusConnection::sessionBus().isConnected()) {
+        return false;
+    }
+    QDBusInterface iface("com.jolla.settings.system.flashlight",
+                         "/com/jolla/settings/system/flashlight",
+                         "com.jolla.settings.system.flashlight",
+                         QDBusConnection::sessionBus());
+    if (iface.isValid()) {
+        QDBusMessage reply = iface.call("toggleFlashlight");
+        if (reply.type() == QDBusMessage::ReplyMessage) {
+            return true;
+        }
+    }
+    return false;
 }
 
 bool FlashLight::state()
