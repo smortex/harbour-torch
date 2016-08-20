@@ -29,7 +29,7 @@ void FlashLight::toggle()
 {
     if (write_value(!current_state)) {
         current_state = !current_state;
-        emit stateChanged(current_state);
+        emit stateChanged();
     }
 }
 

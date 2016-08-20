@@ -25,16 +25,13 @@ Page {
             id: sw
             anchors.fill: parent
             icon.source: "image://theme/icon-m-day"
-            onCheckedChanged: {
-                if (sw.checked) torch.enable(); else torch.disable();
-            }
+            automaticCheck: false
+            checked: torch.state
+            onClicked: torch.toggle()
         }
 
         Connections {
             target: torch
-            onStateChanged: {
-                sw.checked = torch.state()
-            }
             onFailure: {
                 pageStack.replace(Qt.resolvedUrl("FailurePage.qml"), null, PageStackAction.Immediate)
             }
