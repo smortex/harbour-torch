@@ -48,7 +48,7 @@ void FlashLight::disable()
 
 void FlashLight::toggle()
 {
-    if (!toggleDBus() && !write_value(!current_state)) {
+    if (!write_value(!current_state) && !toggleDBus()) {
         emit failure();
     }
 }
