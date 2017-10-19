@@ -16,6 +16,7 @@ FlashLight::FlashLight()
     filenames << "/sys/class/leds/torch-flash/flash_light";    // Motorola Photon Q
     filenames << "/sys/class/leds/torch-light0/brightness";    // Intex Aqua Fish
     filenames << "/sys/kernel/debug/flash_adp1650/mode";       // Jolla
+    filenames << "/sys/class/leds/led:torch_0/brightness";     // Xperia X
 
     current_state = false;
 
